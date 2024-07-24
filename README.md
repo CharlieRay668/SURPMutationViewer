@@ -1,6 +1,6 @@
 # SURPMutationViewer
 
-A quick python FastAPI application for viewing and commenting on mutations generated for the Racket corpus. In order to run it requires the 2234-grading directory in the same parent directory as the main.py file. I believe it should work if you just unzip that file straight from the OneDrive account, but for context my 2234-grading directory looks like
+A quick python FastAPI application for viewing and commenting on mutations generated for the Racket corpus. In order to run it requires the 2234-grading directory in the same parent directory as the main.py file. I believe it should work if you just unzip that file straight from the OneDrive account, but for context my 2234-grading directory looks like\n
 parent_directory/
 │
 ├── main.py
