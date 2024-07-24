@@ -12,4 +12,9 @@ parent_directory/
         - ...
     - ...
 \
-The particular naming's of the directories are infact important. Everything else should be included in this repository, I didn't want to push that folder for obvious reasons.\ Additonally, requirements.txt contains everything needed for a virtual environment to run the script, and the script can just be run via python3 main.py, at which point the webserver will be hosted localy.
+The particular naming's of the directories are infact important. Everything else should be included in this repository, I didn't want to push that folder for obvious reasons. Additonally, requirements.txt contains everything needed for a virtual environment to run the script, and the script can just be run via python3 main.py, at which point the webserver will be hosted localy.
+
+A couple of notes: When creating a note in the webapp, your notes will be saved to the CSV file containing all the data, thus, if you wish to share your notes, pushing & pulling is required\
+A grey highlight means that all mutants which appeared on that line were killed\
+A red highlight means that all mutants which appeared on that line survived\
+A orange highlight means that there was a mixture of killed/survived mutants
