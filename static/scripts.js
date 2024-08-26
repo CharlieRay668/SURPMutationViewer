@@ -4,12 +4,17 @@ function showMutations(details) {
 }
 
 function updateNotes(mutant_index, note) {
+    // Get the current URL
+    const urlParams = new URLSearchParams(window.location.search);
+    // Extract the 'file' parameter from the URL
+    const file = urlParams.get('file') || 'mutation_report.csv';
+    console.log('file:', file);
     fetch('/update_note', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: `mutant_index=${mutant_index}&note=${encodeURIComponent(note)}`
+        body: `mutant_index=${mutant_index}&note=${encodeURIComponent(note)}&file=${encodeURIComponent(file)}`
     })
     .then(response => response.json())
     .then(data => {
@@ -19,6 +24,7 @@ function updateNotes(mutant_index, note) {
         console.error('Error:', error);
     });
 }
+
 
 function sortTable(columnIndex) {
     var table, rows, switching, i, x, y, shouldSwitch, direction, switchcount = 0;

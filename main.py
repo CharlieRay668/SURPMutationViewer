@@ -176,7 +176,8 @@ def get_source(file_path: str, file: str = Query("mutation_report.csv")):
     return HTMLResponse(content=html_content)
 
 @app.post("/update_note")
-def update_note(mutant_index: int = Form(...), note: str = Form(...), file: str = Query("mutation_report.csv")):
+def update_note(mutant_index: int = Form(...), note: str = Form(...), file: str = Form(...)):
+    print(file)
     data = read_csv(file)
     if mutant_index < 0 or mutant_index >= len(data):
         raise HTTPException(status_code=404, detail="Invalid mutant index")
