@@ -48,7 +48,7 @@ def home(file: str = Query("mutation_report.csv")):
     data = read_csv(file)
     # Group by file and calculate mutation scores
     mutation_scores = data.groupby('file')['Result'].value_counts(normalize=True).unstack(fill_value=0)
-    mutation_scores['MutationScore'] = mutation_scores.get('failed', 0)
+    mutation_scores['MutationScore'] = mutation_scores.get('Killed', 0)
     
     # Assignment based on the file path
     data['Assignment'] = data['file'].apply(lambda x: x.split("/")[2])
@@ -121,7 +121,7 @@ def get_source(file_path: str, file: str = Query("mutation_report.csv")):
             results = line_mutations['Result'].unique()
             if len(results) > 1:
                 highlight_class = "highlight-mixed"
-            elif results[0] == "failed":
+            elif results[0] == "Killed":
                 highlight_class = "highlight-failed"
             else:
                 highlight_class = "highlight-passed"
@@ -131,7 +131,7 @@ def get_source(file_path: str, file: str = Query("mutation_report.csv")):
                 destination = mutation['MutantDestination']
                 mutant_type = mutation['MutatorType']
                 mutant_status = mutation['Result']
-                if mutant_status == "failed":
+                if mutant_status == "Killed":
                     mutant_status = "Killed"
                 else:
                     mutant_status = "Survived"
